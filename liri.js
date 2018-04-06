@@ -60,9 +60,7 @@ mainPrompt.prompt({
 			name: "songInput"
 		}
 
-
 			]).then(function(spotifyInquireResponse){
-
 				spotify.search({
 					type: 'track',
 					query: spotifyInquireResponse.songInput
@@ -78,9 +76,7 @@ mainPrompt.prompt({
 
 					}
 				});
-
 			});
-
 	}
 
 	if (mainInquirerResponse.main == "Movie this") {
@@ -114,6 +110,36 @@ mainPrompt.prompt({
 				});
 
 			});
+	}
+
+	if (mainInquirerResponse.main == "do what it says") {
+		var Spotify = require('node-spotify-api');
+		var spotify = new Spotify(keys.spotify);
+		var fs = require('fs');
+
+		fs.readFile('random.txt', 'UTF8', function(err, text){
+			if(err) {
+				return console.log(err);
+			} else {
+
+				spotify.search({
+					type: 'track',
+					query: text
+				}, function(err, data) {
+					if (err) {
+						return console.log('Error occured: ' + err);
+					} else {
+						//console.log(data);
+						console.log("Artist: " + data.tracks.items[0].artists[0].name);
+						console.log("Album: " +data.tracks.items[0].album.name);
+						console.log("Song Name: " +data.tracks.items[0].name);
+						console.log("Link: " +data.tracks.items[0].external_urls.spotify);
+					}
+				});
+			}
+		});
+
+
 	}
 
 });
