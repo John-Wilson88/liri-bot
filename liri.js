@@ -66,7 +66,7 @@ mainPrompt.prompt({
 					query: spotifyInquireResponse.songInput
 				}, function(err, data) {
 					if (err) {
-						return console.log('Error occured: ' + err);
+						return console.log("Could not find that song...");
 					} else {
 						//console.log(data);
 						console.log("Artist: " + data.tracks.items[0].artists[0].name);
