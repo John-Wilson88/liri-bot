@@ -68,7 +68,7 @@ mainPrompt.prompt({
 					if (err) {
 						return console.log("Could not find that song...");
 					} else {
-						//console.log(data);
+						// console.log(data.tracks);
 						console.log("Artist: " + data.tracks.items[0].artists[0].name);
 						console.log("Album: " +data.tracks.items[0].album.name);
 						console.log("Song Name: " +data.tracks.items[0].name);
